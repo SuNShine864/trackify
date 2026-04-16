@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Register</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Register</h2>
+
+    <form id="registerForm">
+      <input type="text" placeholder="Name" id="regUsername" required />
+      <input type="email" placeholder="Email" id="regEmail" required />
+      <input type="password" placeholder="Password" id="regPassword" required />
+      <label for="avatar">Upload Avatar</label>
+      <input type="file" id="avatar" accept="image/*" />
+      <button type="submit">Register</button>
+    </form>
+
+    <p>
+      Already registered?
+      <a href="login.html">Login here</a>
+    </p>
+    <p id="message"></p>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
