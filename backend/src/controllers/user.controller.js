@@ -3,6 +3,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import {ApiError} from "../utils/ApiError.js" 
 import {User} from "../models/user.model.js"
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
+import {emailService} from "../services/email.service.js"
 import jwt from "jsonwebtoken";
 const generateAccessAndRefreshTokens=async(userId)=>{
     try {
@@ -54,11 +55,10 @@ const registerUser=asyncHandler(async(req,res)=>{
     if(!createdUser){
         throw new ApiError(500,"Faced problem in registering the user")
     }
+    emailService.sendRegistrationEmail(user.email,user.username) 
     return res.status(200).json(
         new ApiResponse(200,createdUser, "User is registered Successfully")
     )
-
-    
 })
 const loginUser=asyncHandler(async(req,res)=>{
     //get details from user
